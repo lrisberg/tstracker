@@ -2,46 +2,53 @@
 
 const simDaysInAYear = 28;
 
-const lifespans = {
-  baby: 1,      // 0
-  toddler: 3,   // 1 - 3
-  child: 8,     // 4 - 11
-  teen: 8,      // 12 - 19
-  adult: 50,    // 20 - 69
-  elder: '70+'  // 70+
+// for each lifestate, enter the age they transition to next lifestate
+const transition = {
+  baby: 0,
+  toddler: 1,
+  child: 4,
+  teen: 10,
+  adult: 18,
+  elder: 70
 }
-
 
 function calculateDaysOld(ageState, daysUntilBirthday) {
   if (ageState === 'baby') {
-    return (lifespans.baby * simDaysInAYear) - daysUntilBirthday;
+    let lifeStateTotalDays = (transition.toddler) * simDaysInAYear;
+    return lifeStateTotalDays - daysUntilBirthday;
   }
   else if (ageState === 'toddler') {
-    let lifeStateTotalDays = (lifespans.baby + lifespans.toddler) * simDaysInAYear;
+    let lifeStateTotalDays = (transition.child) * simDaysInAYear;
     return lifeStateTotalDays - daysUntilBirthday;
   }
   else if (ageState === 'child') {
-    let lifeStateTotalDays = (lifespans.baby + lifespans.toddler + lifespans.child) * simDaysInAYear;
+    let lifeStateTotalDays = (transition.teen) * simDaysInAYear;
     return lifeStateTotalDays - daysUntilBirthday;
   }
   else if (ageState === 'teen') {
-    let lifeStateTotalDays = (lifespans.baby + lifespans.toddler + lifespans.child + lifespans.teen) * simDaysInAYear;
+    let lifeStateTotalDays = (transition.adult) * simDaysInAYear;
     return lifeStateTotalDays - daysUntilBirthday;
   }
   else if (ageState === 'adult') {
-    let lifeStateTotalDays = (lifespans.baby + lifespans.toddler + lifespans.child + lifespans.teen + lifespans.adult) * simDaysInAYear;
+    let lifeStateTotalDays = (transition.elder) * simDaysInAYear;
     return lifeStateTotalDays - daysUntilBirthday;
   }
   else if (ageState === 'elder') {
-    return 'You already know this!'
+    return 'elder'
   }
 }
 
+
 function calculateAge(daysOld) {
+  if (daysOld === 'elder') {
+    return 'You already know this sim\'s age in days!'
+  }
   return parseInt(daysOld / simDaysInAYear);
 }
 
-console.log(calculateDaysOld('toddler', 28));
+
+
+
 
 // http://www.countdowntopregnancy.com/tools/age_fertility_calculator.php
 // returns [pregchance, miscarrchance, trisomy21chance]
