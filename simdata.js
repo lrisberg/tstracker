@@ -4,7 +4,7 @@ let sim = {
   firstname: 'Millicent',
   lastName: 'Falconbourne',
   age: 16,
-  marital: 'maiden',
+  maritalstatus: 'maiden',
   orientation: 'straight',
   children: 0,
   miscarriages: 0,
@@ -24,13 +24,13 @@ let sim = {
   religion: 'Ithican',
   faith: 90,
   skills: {
-    creativity: 0,
-    cooking: 0,
-    charisma: 0,
-    body: 0,
+    creativity: 5,
+    cooking: 4,
+    charisma: 4,
+    body: 1,
     mechanical: 0,
     logic: 0,
-    cleaning: 0
+    cleaning: 2
   },
   health: 75,
   modifiers: [['Royal Favor', 2], ['Blessed', 2]],
@@ -42,12 +42,12 @@ let sim = {
   interests: {
     politics: 6,
     food: 8,
-    toys: 3,
-  }
+    toys: 3
+  },
   disabilities: null,
-  rewards: 'Give Me Beauty'
+  rewards: 'Give Me Beauty',
   secondaryaspiration: 'Knowledge',
-  occupation: 'Princess';
+  occupation: 'Princess',
   marriagevalue: 'x',
   alignment: 'Lawful Good'
 }

@@ -1,8 +1,10 @@
 // CONSTANTS
 
+// TIME
 const simDaysInAYear = 28;
+const simDaysInASeason = 7;
 
-// for each lifestate, enter the age they transition to next lifestate
+// enter age they transition to each lifestate
 const transition = {
   baby: 0,
   toddler: 1,
@@ -11,6 +13,9 @@ const transition = {
   adult: 18,
   elder: 70
 }
+
+
+// FUNCTIONS //
 
 function calculateDaysOld(ageState, daysUntilBirthday) {
   if (ageState === 'baby') {
@@ -37,14 +42,14 @@ function calculateAge(daysOld) {
   if (daysOld === 'elder') {
     return 'You already know this sim\'s age in days!'
   }
+
   return parseInt(daysOld / simDaysInAYear);
 }
 
 // http://www.countdowntopregnancy.com/tools/age_fertility_calculator.php
-// returns [pregchance, miscarrchance, trisomy21chance]
 function calculateAnnualFertility(age) {
   if (age <= 12) {
-    return 0.0;
+    return 0.00;
   }
   else if (age === 13) {
     return 0.20;
@@ -86,7 +91,7 @@ function calculateAnnualFertility(age) {
     return 0.14; // should be 11, but had to up it to reach 1% / day
   }
   else if (age >= 50) {
-    return 0.0;
+    return 0.00;
   }
 }
 
@@ -101,11 +106,9 @@ function calculateDailyFertility(annualFertility) {
   return dailyFertility.toFixed(2);
 }
 
-console.log(calculateDailyFertility(calculateAnnualFertility(19)));
-
 function calculateMiscarrChance(age) {
   if (age <= 12) {
-    return 0;
+    return 0.00;
   }
   else if (age === 13) {
     return 0.15;
@@ -126,7 +129,31 @@ function calculateMiscarrChance(age) {
     return 0.50;
   }
   else if (age >= 50) {
-    return 0.0;
+    return 0.00;
+  }
+}
+
+function calculateMaternalDeathChance(age) {
+  if (age <= 12) {
+    return 0.00;
+  }
+  else if (age >= 13 && age <= 14) {
+    return 0.015;
+  }
+  else if (age >= 15 && age <= 24) {
+    return 0.010;
+  }
+  else if (age >= 25 && age <= 34) {
+    return 0.015;
+  }
+  else if (age >= 35 && age <= 44) {
+    return 0.020;
+  }
+  else if (age >= 45 && age <= 49) {
+    return 0.025;
+  }
+  else if (age >= 50) {
+    return 0.00;
   }
 }
 
@@ -153,15 +180,38 @@ function calculateGrilledCheeseAspChance(age) {
 
 // example: 50% of chance of baby over 1 year. What is the chance each simday?
 
-function calculateEventChance(chance, interval) {
-
-}
-
-function calculateDailyChance(yearlyChance) {
-  let noEventChance = 1 - yearlyChance;
-  let dailyChance = 1 - (takeXthRoot(noEventChance, simDaysInAYear));
+function calculateDailyChanceFromYearlyChance(yearlyChance) {
+  let dailyChance = 1 - (takeXthRoot(1 - yearlyChance, simDaysInAYear));
 
   return dailyChance.toFixed(2);
 }
 
-console.log(calculateDailyChance(0.96));
+function calculateDailyChanceFromSeasonalChance(seasonalChance) {
+  let dailyChance = 1 - (takeXthRoot(1 - seasonalChance, simDaysInASeason));
+
+  return dailyChance.toFixed(2)
+}
+
+function calculateSeasonalChanceFromYearlyChance(yearlyChance) {
+  let seasonalChance = 1 - (takeXthRoot(1 - yearlyChance, simDaysInAYear));
+
+  return seasonalChance.toFixed(2);
+}
+
+function calculateSeasonalChanceFromDailyChance(dailyChance) {
+
+}
+
+function calculateYearlyChanceFromSeasonalChance(seasonalChance) {
+
+}
+
+function calculateYearlyChanceFromDailyChance(dailyChance) {
+
+}
+
+// calculate bride value
+function calculateBrideValue(sim) {
+  let total = 0;
+  total += sim.skills.
+}

@@ -1,3 +1,8 @@
+// http://mentalfloss.com/article/50513/historical-horror-childbirth
+// as a woman's chances of dying during childbirth were between one and two percent -for each birth. If a woman gave birth to eight or ten children, her chances of eventually dying in childbirth were pretty high. The infant mortality rate was even higher. The chances of a child dying before his fifth birthday were estimated to be around 20 percent, depending on the community (accurate records are scarce).
+
+// Motherhood in early America was even more frightening for slaves. Infant mortality among African and African-American slaves in the 18th century ranged from 28-50 percent, and mortality in children under ten was 40-50 percent, due to maternal malnutrition, overwork, disease, and lack of medical access. Slave owners blamed the mothers for infant deaths, and there is evidence that some babies were deliberately smothered to spare the child a life of slavery, but other factors contributed greatly to the infant death rate.
+
 // preg outcomes by age: [pregchance, miscarrchance, grilledcheesechance]
 
 // 19: [96, 10, .19]
